@@ -1,0 +1,11 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.price-text{
+    float: left;
+    font-weight: bold;
+}
+
+.buy-now-btn{
+    float: right;
+    background-color: rgba(17, 32, 49,0.9);
+}

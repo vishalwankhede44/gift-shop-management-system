@@ -1,0 +1,8 @@
+<div class="card shadow p-2 m-1 bg-white rounded col-4">
+    <img class="card-img-top" src="../../assets/images/sample.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{productName}}</h5>
+      <p class="card-text">{{productDesc}}</p>
+      <p><span class="p-2 price-text">&#8377;{{productPrice}}</span><button class="btn btn-primary buy-now-btn" (click)="addToCart(productId)">Add to Cart</button></p>
+    </div>
+  </div>

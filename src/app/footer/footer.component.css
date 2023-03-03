@@ -1,0 +1,6 @@
+.container-fluid{
+    min-height: 3rem;
+    background-color: #112031;
+    position: relative;
+    bottom: 0;
+}

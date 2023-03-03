@@ -12,44 +12,57 @@
           <h2 class="text-center mb-3">Sign Up</h2>
           <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
             <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <label class="sr-only" for="inlineFormInputGroup">Name</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
                 </div>
-                <input type="text"  ngModel name="username" class="form-control" id="username" placeholder="Username">
+                <input type="text"  ngModel name="customerName" class="form-control" id="name" placeholder="Name">
               </div>
             </div>
             <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <label class="sr-only" for="inlineFormInputGroup">Email</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
+                </div>
+                <input type="email"  ngModel name="customerEmail" class="form-control" id="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Mobile</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="bi bi-telephone-fill"></i></div>
+                </div>
+                <input type="text"  ngModel name="customerMobile" class="form-control" id="mobile" placeholder="Mobile No.">
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Address</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                </div>
+                <textarea  ngModel name="customerAddress" class="form-control" id="address" placeholder="Address"></textarea>
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Password</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
                 </div>
-                <input [type]="show ? 'text' : 'password'" ngModel name="password" class="form-control" id="password" placeholder="Password">
+                <input [type]="show ? 'text' : 'password'" ngModel name="customerPassword" class="form-control" id="password" placeholder="Password">
                 <div class="input-group-postpend">
-                  <button class="btn" (click)="togglePassword()" type="button">
+                  <!-- <button class="btn" (click)="togglePassword()" type="button">
                     <i *ngIf="show;else hideIcon" class="bi bi-eye-fill"></i>
-                   <ng-template #hideIcon><i class="bi bi-eye-slash-fill"></i></ng-template></button>
+                   <ng-template #hideIcon><i class="bi bi-eye-slash-fill"></i></ng-template></button> -->
                 </div>
               </div>
               
             </div>
-            <div class="col-auto">
-                <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
-                  </div>
-                  <input [type]="showConfirm ? 'text' : 'password'" ngModel name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password">
-                  <div class="input-group-postpend">
-                    <button class="btn" (click)="toggleConfirmPassword()" type="button">
-                      <i *ngIf="showConfirm;else hideIcon" class="bi bi-eye-fill"></i>
-                     <ng-template #hideIcon><i class="bi bi-eye-slash-fill"></i></ng-template></button>
-                  </div>
-                </div>
-                
-              </div>
+            
             <div class="col-auto">
               <input type="submit" class="btn btn-block mt-2 mt-md-3 " value="Sign Up" >
             </div>

@@ -1,0 +1,30 @@
+<app-navigation></app-navigation>
+<div class="container-fluid">
+ 
+  <div class="">
+<div *ngFor="let product of productList" class="row my-4">
+  <div class="card col-6 offset-3">
+    <div class="row no-gutters">
+      <div class="col-md-4 mt-3">
+        <img src="{{product.image}}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">
+          <div class="form-group">
+            <p class="row">
+            <input type="number" title="Quantity" min="1" max="5" class="form-control col-6"  name="qty" [(ngModel)]="product.quantity" required="required" disabled="disabled">
+            <span class="col-6 p-2 price-text"><b>Price : &#8377;{{product.price * product.quantity}}</b></span>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+
+
+<!-- <app-footer></app-footer> -->

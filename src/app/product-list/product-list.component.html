@@ -1,0 +1,27 @@
+<app-navigation></app-navigation>
+<div class="container ">
+ <div class="row">
+    <div *ngIf="productList.length == 0; else productsContainer" class="col-12 my-3">
+        <h2 class="text-center">No Products Found</h2>
+    </div>
+    <ng-template #productsContainer>
+        <div *ngFor="let product of productList" class="col-4 pt-3 pt-md-4">
+            <!-- <app-product [productName]="product.productName" [productDesc]="product.productDesc" [productPrice]="product.productPrice" [productId]="product.productId"></app-product>  -->
+            <div class="card shadow p-2 m-1 bg-white rounded">
+                <img class="card-img-top" src="{{product.productImage}}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{product.productName}}</h5>
+                <p class="card-text">{{product.productDescription}}</p>
+                <p><span class="p-2 price-text">&#8377;{{product.productPrice}}</span>
+                <button class="btn btn-primary buy-now-btn" (click)="addToCart(product.productID)">Add to Cart</button></p>
+                </div>
+            </div>
+        </div> 
+    </ng-template>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+

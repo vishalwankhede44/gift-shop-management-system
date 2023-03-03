@@ -12,25 +12,25 @@
           <h2 class="text-center mb-3">Login</h2>
           <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
             <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <label class="sr-only" for="inlineFormInputGroup">Email ID</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
                 </div>
-                <input type="text"  ngModel name="username" class="form-control" id="username" placeholder="Username">
+                <input type="email"  ngModel name="email" class="form-control" id="email" placeholder="Email ID">
               </div>
             </div>
             <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <label class="sr-only" for="inlineFormInputGroup">Password</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
                 </div>
                 <input [type]="show ? 'text' : 'password'" ngModel name="password" class="form-control" id="password" placeholder="Password">
                 <div class="input-group-postpend">
-                  <button class="btn" (click)="togglePassword()" type="button">
+                  <!-- <button class="btn" (click)="togglePassword()" type="button">
                     <i *ngIf="show;else hideIcon" class="bi bi-eye-fill"></i>
-                   <ng-template #hideIcon><i class="bi bi-eye-slash-fill"></i></ng-template></button>
+                   <ng-template #hideIcon><i class="bi bi-eye-slash-fill"></i></ng-template></button> -->
               
                 </div>
               </div>

@@ -8,15 +8,16 @@
         <li class="nav-item active nav-text pr-2" [routerLinkActive]="['active']">
           <a routerLink="/home"  class="nav-link nav-text" href="#">Home</a>
         </li>
+        
         <li *ngIf="isLoggedIn == false; else loggedIn" class="nav-item nav-text pl-2 pr-2" [routerLinkActive]="['active']">
           <a routerLink="/login" class="nav-link nav-text" href="#">Login</a>
         </li>
-        <li *ngIf="isLoggedIn == false; else loggedIn" class="nav-item nav-text pl-2" [routerLinkActive]="['active']">
+        <li *ngIf="isLoggedIn == false;" class="nav-item nav-text pl-2" [routerLinkActive]="['active']">
             <a routerLink="/signup" class="nav-link nav-text" href="#">SignUp</a>
           </li>
         <ng-template #loggedIn>
           <li class="nav-item nav-text" [routerLinkActive]="['active']">
-            <a  class="nav-link nav-text" href="#">Logout</a>
+            <a (click)="logout();" class="nav-link nav-text" href="#">Logout</a>
           </li>
         </ng-template>
        

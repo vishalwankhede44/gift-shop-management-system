@@ -1,0 +1,41 @@
+<app-navigation></app-navigation>
+<h3 class="text-center my-3">All Orders</h3>
+<div class="table-responsive m-3">
+    <table class="table table-bordered table-striped text-center table-vertical-align">
+      <thead>
+        <tr>
+          <th>Order Id</th>
+          <th>Order Date</th>
+          <th>Customer Id</th>
+          <th>Payment Id</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let product of ordersList">
+          <td class="align-middle">{{product.orderId}}</td>
+          <td class="align-middle">{{product.orderDate}}</td>
+          <td class="align-middle">{{product.customerId}}</td>
+          <td class="align-middle">{{product.paymentId}}</td>
+          <td class="align-middle">
+            <div class="form-group">
+                
+                <select class="form-control" id="status" [(ngModel)]="product.status">
+                    <option value="Placed">Placed</option>
+                    <option value="Prepared">Prepared</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+            </div>
+            <button class="btn btn-sm btn-info" (click)="updateOrderStatus(product.orderId,product.status)">Update Status</button>          
+            </td>
+          <td class="align-middle">
+          <button class="m-1 btn btn-primary btn-sm" (click)="viewOrderClick(product.orderId)">View Order</button></td>
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

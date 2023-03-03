@@ -1,0 +1,55 @@
+<app-navigation></app-navigation>
+<div *ngIf="this.popup==true" class="alert alert-{{this.popupType}} alert-dismissible fade show col-10 offset-1 col-md-6 offset-md-3 mt-5" role="alert">
+  <strong>{{popupMessage}}</strong>
+  <button type="button" class="close" (click)="this.popup=false;" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 " id="loginForm">
+          <h2 class="text-center mb-3">Edit Product</h2>
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" >
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Product Name</label>
+              <div class="input-group mb-2">
+                
+                <input type="text"  [(ngModel)]="productInfo.productName" name="productName" class="form-control" id="productName" placeholder="Product Name">
+              </div>
+            </div>
+            <!-- <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup">Product Type</label>
+                <div class="input-group mb-2">
+                  <input type="text"  ngModel name="productType" class="form-control" id="productType" placeholder="Product Type">
+                </div>
+              </div> -->
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Product Price</label>
+              <div class="input-group mb-2">
+                <input type="number" min="1"  [(ngModel)]="productInfo.productPrice" name="productPrice" class="form-control" id="productPrice" placeholder="Product Price">
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Product Image</label>
+              <div class="input-group mb-2">
+                <input type="file" (change)="onFileSelected($event)"  ngModel name="productImage" class="form-control" id="productImage" placeholder="Please select JPG/PNG file" accept="image/png, image/jpeg" >
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Product Description</label>
+              <div class="input-group mb-2">                
+                <textarea  [(ngModel)]="productInfo.productDescription" name="productDescription" class="form-control" id="productDescription" placeholder="Product Description"></textarea>
+              </div>
+            </div>
+           
+            <div class="col-auto">
+              <input type="submit" class="btn btn-block mt-2 mt-md-3 " value="Submit" >
+            </div>
+            </form>
+          </div> 
+          
+    </div>
+
+</div>
+

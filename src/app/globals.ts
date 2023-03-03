@@ -1,0 +1,1 @@
+export var loginSessionTimeInDays:number = 1/48

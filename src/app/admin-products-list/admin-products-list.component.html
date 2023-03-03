@@ -1,0 +1,28 @@
+<app-navigation></app-navigation>
+<h3 class="text-center my-3">All Products</h3>
+<div class="table-responsive m-3">
+    <table class="table table-bordered table-striped text-center table-vertical-align">
+      <thead>
+        <tr>
+          <th>Product Id</th>
+          <th>Product Name</th>
+          <th>Product Image</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let product of productList">
+          <td class="align-middle">{{product.productID}}</td>
+          <td class="align-middle">{{product.productName}}</td>
+          <td class="align-middle"><img class="img-responsive" height="150px" src={{product.productImage}}></td>
+          <td class="align-middle">{{product.productPrice}}</td>
+          <td class="align-middle"><button class="m-1 btn btn-primary btn-sm" (click)="editClick(product.productID)">Edit</button><br>
+          <button class="m-1 btn btn-danger btn-sm" (click)="deleteClick(product.productID)">Delete</button></td>
+          <!-- <td>{{product.productDescription}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

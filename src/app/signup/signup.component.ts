@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit(data:any){
+    console.log(data)
     // if(!globals.Methods.validateText(data.username) || !globals.Methods.validateText(data.password)){
     //   globals.popup.msg = "Invalid Input";
     //   globals.popup.type = 'danger';

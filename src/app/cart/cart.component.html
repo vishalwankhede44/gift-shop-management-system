@@ -1,0 +1,33 @@
+<app-navigation></app-navigation>
+<div class="container-fluid">
+ 
+  <div class="">
+<div *ngFor="let product of productList" class="row my-4">
+  <div class="card col-6 offset-3">
+    <div class="row no-gutters">
+      <div class="col-md-4 mt-3">
+        <img src="{{product.image}}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">
+          <div class="form-group">
+            <p class="row">
+            <input type="number" title="Quantity" min="1" max="5" class="form-control col-6"  name="qty" [(ngModel)]="product.qty" required="required">
+            <span class="col-6 p-2 price-text"><b>Price : &#8377;{{product.price * product.qty}}</b></span>
+            </p>
+          </div>
+          <p></p>
+          <button class="btn btn-danger buy-now-btn" title="Remove from cart" (click)="removeFromCart(product.cartId)"><i class="bi bi-trash"></i>&emsp;Remove From Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+<div class="col-6 offset-3">
+    <button class="btn btn-block m-2 mb-5 " id="placeOrderBtn" (click)="placeOrder()">Place Order</button>
+</div>
+
+<!-- <app-footer></app-footer> -->
