@@ -1,11 +1,30 @@
 <app-navigation></app-navigation>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 " id="loginForm">
-          <h2 class="text-center mb-3">Customer Details</h2>
+<div class="container-fluid">
+ 
+  <div class="">
+<div class="row my-4">
+  <div class="card col-6 offset-3">
+    <div class="row no-gutters">
+      <div class="col-md-12 mt-3">
+        <h5 class="text-center">Customer Details</h5>
+      </div>
+      <div class="col-md-12 offset-md-3">
+        <div class="card-body">
+          <p class="card-text">
+          <div class="form-group text-center"><strong>
+            <p class="row">Customer Id : {{customer.customerId}}</p>
+            <p class="row">Customer Name : {{customer.customerName}}</p>
+            <p class="row">Customer Mobile : {{customer.customerMobile}}</p>
+            <p class="row">Customer Email : {{customer.customerEmail}}</p>
+            <p class="row">Customer Address : {{customer.customerAddress}}</p>
+        </strong>
+          </div>
           
-          </div> 
-          
+        </div>
+      </div>
     </div>
-
+  </div>
+   
 </div>
+
+

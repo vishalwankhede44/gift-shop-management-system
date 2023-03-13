@@ -22,6 +22,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { AdminShowAllOrdersComponent } from './admin-show-all-orders/admin-show-all-orders.component';
 import { ShowOrderItemsComponent } from './show-order-items/show-order-items.component';
 import { ShowCustomerInfoComponent } from './show-customer-info/show-customer-info.component';
+import { ShowMyOrdersComponent } from './show-my-orders/show-my-orders.component';
+import { PaymentInfoComponent } from './payment-info/payment-info.component';
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
@@ -32,8 +34,11 @@ const routes: Routes = [
   {path: 'admin/productList', component:AdminProductsListComponent},
   {path: 'admin/editProduct/:productId', component:EditProductComponent},
   {path: 'admin/showAllOrders', component:AdminShowAllOrdersComponent},
+  {path: 'admin/customer-details/:customerId',component:ShowCustomerInfoComponent},
   {path: 'showOrderItems/:orderId', component:ShowOrderItemsComponent},
+  {path: 'myOrders',component:ShowMyOrdersComponent},
   {path: 'cart', component:CartComponent},
+  {path: 'paymentdetails/:paymentId',component:PaymentInfoComponent},
   {path: 'home', component:ProductListComponent},
   {path: '**', component:ProductListComponent}
 ];
@@ -55,7 +60,9 @@ const routes: Routes = [
     EditProductComponent,
     AdminShowAllOrdersComponent,
     ShowOrderItemsComponent,
-    ShowCustomerInfoComponent
+    ShowCustomerInfoComponent,
+    ShowMyOrdersComponent,
+    PaymentInfoComponent
   ],
   imports: [
     BrowserModule,

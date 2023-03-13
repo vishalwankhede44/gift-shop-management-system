@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md  ">
+<nav class="navbar navbar-expand-md" ng-controller="navbarCtrl">
     <a class="navbar-brand nav-text" href="#">Gift Shop  Management System</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,28 @@
         <li *ngIf="isLoggedIn == false; else loggedIn" class="nav-item nav-text pl-2 pr-2" [routerLinkActive]="['active']">
           <a routerLink="/login" class="nav-link nav-text" href="#">Login</a>
         </li>
-        <li *ngIf="isLoggedIn == false;" class="nav-item nav-text pl-2" [routerLinkActive]="['active']">
+          <li *ngIf="isLoggedIn == true && isAdmin==true;" class="nav-item nav-text pl-2" [routerLinkActive]="['active']">
+            <a routerLink="/admin/showAllOrders" class="nav-link nav-text" href="#">Orders</a>
+          </li>
+          <li *ngIf="isLoggedIn == true && isAdmin==true;" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Product
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/admin/addProduct">Add Product</a>
+              <a class="dropdown-item" href="/admin/productList">View All Product</a>
+            </div>
+          </li>
+          <li *ngIf="isLoggedIn == false;" class="nav-item nav-text pl-2" [routerLinkActive]="['active']">
             <a routerLink="/signup" class="nav-link nav-text" href="#">SignUp</a>
           </li>
         <ng-template #loggedIn>
+          <li *ngIf="isAdmin==false;" class="nav-item nav-text pl-2 pr-2" [routerLinkActive]="['active']">
+            <a routerLink="/cart" class="nav-link nav-text" href="#">Cart</a>
+          </li> 
+          <li *ngIf="isAdmin==false;" class="nav-item nav-text pl-2 pr-2" [routerLinkActive]="['active']">
+            <a routerLink="/myOrders" class="nav-link nav-text" href="#">My Orders</a>
+          </li> 
           <li class="nav-item nav-text" [routerLinkActive]="['active']">
             <a (click)="logout();" class="nav-link nav-text" href="#">Logout</a>
           </li>

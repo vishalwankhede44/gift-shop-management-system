@@ -17,8 +17,8 @@
         <tr *ngFor="let product of ordersList">
           <td class="align-middle">{{product.orderId}}</td>
           <td class="align-middle">{{product.orderDate}}</td>
-          <td class="align-middle">{{product.customerId}}</td>
-          <td class="align-middle">{{product.paymentId}}</td>
+          <td class="align-middle"><b><a href="http://localhost:4200/admin/customer-details/{{product.customerId}}">{{product.customerId}}</a></b></td>
+          <td class="align-middle"><b><a href="http://localhost:4200/paymentdetails/{{product.paymentId}}">{{product.paymentId}}</a></b></td>
           <td class="align-middle">
             <div class="form-group">
                 

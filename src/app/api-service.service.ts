@@ -2,20 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders} from '@angular/common/http'
 import {catchError} from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { CookiesService } from './cookies.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
   private readonly serverURL = 'http://localhost:8989'
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private cookies:CookiesService) { }
 
   handleError(error:any){
     return throwError(error.error.message || "Server Error");
   }
 
+  adminLogin(data:any):Observable<any>{
+    const headers =  {
+      headers: new  HttpHeaders({ 
+        'Content-Type': 'application/json'
+     })};
+    return this.http.post(this.serverURL+'/admin/login',data,headers).pipe(catchError(this.handleError))
+  }
+
   getAllOrders():Observable<any>{
     return this.http.get(this.serverURL+'/getAllOrders').pipe(catchError(this.handleError))
+  }
+
+  getAllMyOrders(orderId:Number):Observable<any>{
+    return this.http.get(this.serverURL+'/getAllOrders/'+orderId).pipe(catchError(this.handleError))
   }
 
   getOrderItemsOfOrder(orderId:Number):Observable<any>{
@@ -37,14 +50,26 @@ export class ApiServiceService {
      return this.http.post(this.serverURL+'/updateOrderStatus',data,headers).pipe(catchError(this.handleError))
   }
 
-  placeOrder(data:any):Observable<any>{
+  placeOrder(data:any,paymentMethod:any,price:any):Observable<any>{
     const headers =  {
       headers: new  HttpHeaders({ 
         'Content-Type': 'application/json'
      })};
 
+     data.paymentMethod = paymentMethod;
+     data.totalCost = price
+     data.customerId = this.cookies.getCookie('id')
+
      return this.http.post(this.serverURL+'/placeOrder/'+9,data,headers).pipe(catchError(this.handleError))
   }
+
+  getPaymentDetails(pid:any):Observable<any>{
+   return this.http.get(this.serverURL+'/getPaymentInfo/'+pid).pipe(catchError(this.handleError))
+  }
+
+  getCustomerDetails(cid:any):Observable<any>{
+    return this.http.get(this.serverURL+'/getCustomerById/'+cid).pipe(catchError(this.handleError))
+   }
 
   addProduct(data:any):Observable<any>{
     const headers =  {
@@ -112,6 +137,15 @@ export class ApiServiceService {
 
      return this.http.post( this.serverURL+'/addToCart',data,headers).pipe(catchError(this.handleError))
 
+  }
+
+  customerSignUp(data:any):Observable<any>{
+    const headers =  {
+      headers: new  HttpHeaders({ 
+        'Content-Type': 'application/json'
+     })};
+
+     return this.http.post(this.serverURL+'/addCustomer',data,headers).pipe(catchError(this.handleError))     
   }
 
   customerLogin(data:any):Observable<any>{

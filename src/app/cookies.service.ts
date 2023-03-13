@@ -28,4 +28,8 @@ export class CookiesService {
     return this.getCookie('type').length != 0 ;
   }
 
+  isAdmin():boolean{
+    return this.getCookie('type').length != 0 && this.getCookie('type')=='Admin';
+  }
+
 }

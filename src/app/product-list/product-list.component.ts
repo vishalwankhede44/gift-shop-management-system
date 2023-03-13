@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
+import { CookiesService } from '../cookies.service';
+import { ToastrService } from 'ngx-toastr';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +32,7 @@ export class ProductListComponent implements OnInit {
     }
 
   ]
-  constructor(private apiService:ApiServiceService) { }
+  constructor(private apiService:ApiServiceService, private cookiesService:CookiesService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.apiService.getAllProducts().subscribe((res)=>{
@@ -37,13 +41,34 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  showNotLoggedInToast() {
+    
+    this.toastr.info('Please log in first!','User Not Logged In', {
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      timeOut: 3000,
+    });
+  }
+
   addToCart(productid:any){
+    if(this.cookiesService.isLoggedIn()){
     this.apiService.addToCart(productid,9,1).subscribe((res)=>{
       if(res)
-        console.log("Added Successfully")
+        this.toastr.success('Product added to cart','Success', {
+        positionClass: 'toast-top-right',
+        progressBar: true,
+        timeOut: 3000,
+      });
       else
-        console.log("Alredy added to cart")
+      this.toastr.error('This product is already in your cart','Oops!', {
+        positionClass: 'toast-top-right',
+        progressBar: true,
+        timeOut: 3000,
+      });
     })
+  }else{
+    this.showNotLoggedInToast();
   }
+ }
 
 }

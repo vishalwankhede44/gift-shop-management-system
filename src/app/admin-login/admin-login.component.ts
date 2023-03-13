@@ -35,21 +35,14 @@ export class AdminLoginComponent implements OnInit {
 
   onSubmit(data:any){
     console.log(data)
-    this.apiService.customerLogin(data).subscribe((response)=>{
+    this.apiService.adminLogin(data).subscribe((response)=>{
       console.log(response)
-      this.cookies.setCookie('email',response.customerEmail,globals.loginSessionTimeInDays)
-      this.cookies.setCookie('id',response.customerId,globals.loginSessionTimeInDays)
-      this.cookies.setCookie('name',response.customerName,globals.loginSessionTimeInDays)
-      this.cookies.setCookie('type','Customer',globals.loginSessionTimeInDays)
+      this.cookies.setCookie('email',data.email,globals.loginSessionTimeInDays)
+      this.cookies.setCookie('type','Admin',globals.loginSessionTimeInDays)
       this.router.navigate(['home'])
     },(error)=>{
       console.log("Error "+error)
     });
-    // if(!globals.Methods.validateText(data.username) || !globals.Methods.validateText(data.password)){
-    //   globals.popup.msg = "Invalid Input";
-    //   globals.popup.type = 'danger';
-    //   this.ngOnInit();
-    //   return;
     }
 
     togglePassword(){

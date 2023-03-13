@@ -18,6 +18,7 @@
             <span class="col-6 p-2 price-text"><b>Price : &#8377;{{product.price * product.qty}}</b></span>
             </p>
           </div>
+          
           <p></p>
           <button class="btn btn-danger buy-now-btn" title="Remove from cart" (click)="removeFromCart(product.cartId)"><i class="bi bi-trash"></i>&emsp;Remove From Cart</button>
         </div>
@@ -26,8 +27,21 @@
   </div>
    
 </div>
-<div class="col-6 offset-3">
+<div class="col-6 offset-3" *ngIf="productList.length > 0 else emptyCart">
+  <div class="form-group">
+    <label for="paymentMethod">Payment Method</label>         
+    <select class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod">
+        <option value="Cash On Delivery">Cash On Delivery</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="UPI">UPI</option>
+    </select>
+  </div>
     <button class="btn btn-block m-2 mb-5 " id="placeOrderBtn" (click)="placeOrder()">Place Order</button>
 </div>
+
+<ng-template #emptyCart>
+  <h2 class="text-center"> Cart is empty!</h2>
+</ng-template>
 
 <!-- <app-footer></app-footer> -->

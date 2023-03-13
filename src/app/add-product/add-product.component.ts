@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from '../api-service.service';
+
+import {Router} from "@angular/router";
+import {ApiServiceService} from '../api-service.service'
+import {CookiesService} from '../cookies.service'
+
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-add-product',
@@ -15,10 +20,13 @@ export class AddProductComponent implements OnInit {
   popupType:string = 'success';
   popupMessage:string='';
   productImage:any = ''
-  constructor(private apiService:ApiServiceService,private toastr:ToastrService) { }
+  
+  constructor(private router:Router,private apiService:ApiServiceService,private cookies:CookiesService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.showToast()
+    if(this.cookies.isLoggedIn()==false && this.cookies.isAdmin()==false){
+      this.router.navigate(['home'])
+    }
   }
 
   onSubmit(data:any){
